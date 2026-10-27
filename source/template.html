@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-lang="both">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,6 @@ html[data-lang=ar] .foot{direction:rtl}
 html[data-lang=ar] .idx-ar{padding-inline:0}
 html[data-lang=en] .idx-en{padding-inline:0}
 html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::after{display:none}
-.lang button[data-set=both]{display:inline-block}
 
 @media (max-width:959px){
   .top{grid-template-columns:1fr auto}
@@ -197,7 +196,6 @@ html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::aft
   .brand-ar{display:none}
   html[data-lang=ar] .brand-ar{display:block}
   html[data-lang=ar] .brand-en{display:none}
-  .lang button[data-set=both]{display:none}
   .index{grid-template-columns:1fr}
   .group{grid-template-columns:minmax(0,1fr)}
   .g-spine{order:-1;padding:36px 0 0}
@@ -232,10 +230,10 @@ html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::aft
 </head>
 <body>
 <!--
-THESIS: A bilingual company is shown, not translated: English and Arabic are two pages of one spread meeting at a gold gutter, and the brand's own framed mark is the spine between them. It refuses the hero-plus-cards company template.
+THESIS: A bilingual company is shown, not translated: the page exists whole in English and whole in Arabic, mirrored, one language at a time by the header toggle (the two-page spread mode was removed on Kabozeid's ruling 2026-10-27), with the brand's own framed mark as the spine of the first viewport. It refuses the hero-plus-cards company template.
 OWN-WORLD: Sarat Black field framed in Sarat Gold like the logo portrait; a second hairline frame inside; gold rules as the only structure; Oswald caps for English display, Cairo for Arabic and all body; warm sand secondary text, never grey; no icons, no cards, no gradients.
 STORY: a visitor understands Sarat Tech is the group's digital-product studio, sees what it builds and the five-step method it works by, learns who it builds for, and writes to start a conversation. Products and Team sections are deferred until the product name/logo and the team names/photos are settled (Kabozeid 2026-10-27). Content ruled by Kabozeid 2026-10-27, question by question; method lines from the Strategyzer canon in Patterns Co.
-FIRST VIEWPORT: full-height spread; English headline left, Arabic headline right, the brand's English vertical mark (SARAT · TECH, gold frame) centred as the spine for both languages; one gold action per side.
+FIRST VIEWPORT: full-height page; the brand's English vertical mark (SARAT · TECH, gold frame) as a first column beside the headline, in either language; one gold action.
 FORM: the bilingual spread, candidate 5 of 7 on the surface list; seed key e1d2ec8b.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -244,9 +242,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <header class="top">
   <a class="brand brand-en" href="#top" aria-label="Sarat Tech — home">{{WORDMARK_LTR}}</a>
   <div class="lang" role="group" aria-label="Language · اللغة">
-    <button type="button" data-set="en" aria-pressed="false">EN</button>
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
     <button type="button" data-set="ar" lang="ar" aria-pressed="false">عربي</button>
-    <button type="button" data-set="both" aria-pressed="true" title="Both languages · اللغتان">EN · ع</button>
   </div>
   <a class="brand brand-ar" href="#top" aria-label="سراة التقنية — الرئيسية">{{WORDMARK_RTL}}</a>
 </header>
@@ -391,20 +388,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <script>
 (function(){
   var html=document.documentElement; html.classList.add('js');
-  var KEY='sarat-tech-lang', wide=window.matchMedia('(min-width:960px)');
+  var KEY='sarat-tech-lang';
   function apply(v){
-    if(v==='both'&&!wide.matches) v='en';
+    if(v!=='ar') v='en';
     html.setAttribute('data-lang',v);
     html.lang = v==='ar' ? 'ar' : 'en';
     html.dir  = v==='ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===v ? 'true':'false');});
   }
   var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
-  apply(saved || (wide.matches ? 'both' : 'en'));
+  apply(saved || 'en');
   document.querySelectorAll('.lang button').forEach(function(b){
     b.addEventListener('click',function(){ apply(b.dataset.set); try{localStorage.setItem(KEY,b.dataset.set);}catch(e){} });
   });
-  wide.addEventListener('change',function(){ var cur=html.getAttribute('data-lang'); if(!wide.matches&&cur==='both') apply('en'); else if(wide.matches&&!saved) apply('both'); });
 
   /* reveal: the name lists and the method steps arrive in order */
   if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){

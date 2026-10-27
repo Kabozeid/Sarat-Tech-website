@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-lang="both">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,6 @@ html[data-lang=ar] .foot{direction:rtl}
 html[data-lang=ar] .idx-ar{padding-inline:0}
 html[data-lang=en] .idx-en{padding-inline:0}
 html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::after{display:none}
-.lang button[data-set=both]{display:inline-block}
 
 @media (max-width:959px){
   .top{grid-template-columns:1fr auto}
@@ -197,7 +196,6 @@ html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::aft
   .brand-ar{display:none}
   html[data-lang=ar] .brand-ar{display:block}
   html[data-lang=ar] .brand-en{display:none}
-  .lang button[data-set=both]{display:none}
   .index{grid-template-columns:1fr}
   .group{grid-template-columns:minmax(0,1fr)}
   .g-spine{order:-1;padding:36px 0 0}
@@ -232,10 +230,10 @@ html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::aft
 </head>
 <body>
 <!--
-THESIS: A bilingual company is shown, not translated: English and Arabic are two pages of one spread meeting at a gold gutter, and the brand's own framed mark is the spine between them. It refuses the hero-plus-cards company template.
+THESIS: A bilingual company is shown, not translated: the page exists whole in English and whole in Arabic, mirrored, one language at a time by the header toggle (the two-page spread mode was removed on Kabozeid's ruling 2026-10-27), with the brand's own framed mark as the spine of the first viewport. It refuses the hero-plus-cards company template.
 OWN-WORLD: Sarat Black field framed in Sarat Gold like the logo portrait; a second hairline frame inside; gold rules as the only structure; Oswald caps for English display, Cairo for Arabic and all body; warm sand secondary text, never grey; no icons, no cards, no gradients.
 STORY: a visitor understands Sarat Tech is the group's digital-product studio, sees what it builds and the five-step method it works by, learns who it builds for, and writes to start a conversation. Products and Team sections are deferred until the product name/logo and the team names/photos are settled (Kabozeid 2026-10-27). Content ruled by Kabozeid 2026-10-27, question by question; method lines from the Strategyzer canon in Patterns Co.
-FIRST VIEWPORT: full-height spread; English headline left, Arabic headline right, the brand's English vertical mark (SARAT · TECH, gold frame) centred as the spine for both languages; one gold action per side.
+FIRST VIEWPORT: full-height page; the brand's English vertical mark (SARAT · TECH, gold frame) as a first column beside the headline, in either language; one gold action.
 FORM: the bilingual spread, candidate 5 of 7 on the surface list; seed key e1d2ec8b.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -244,9 +242,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <header class="top">
   <a class="brand brand-en" href="#top" aria-label="Sarat Tech — home"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 749 400" role="img" aria-label="Sarat Tech"><path class="l-letters" d="M159.0,1363.5 L26.0,1362.5 L15.0,1358.5 L4.5,1349.0 L1.5,1342.0 L-0.5,1329.0 L0.5,751.0 L3.5,744.0 L12.0,738.5 L61.0,738.5 L66.0,740.5 L72.5,750.0 L72.5,1272.0 L74.5,1277.0 L82.0,1283.5 L96.0,1283.5 L103.5,1277.0 L105.5,1272.0 L105.5,710.0 L102.5,703.0 L95.0,697.5 L24.0,696.5 L12.0,693.5 L4.5,686.0 L0.5,671.0 L0.5,24.0 L2.5,13.0 L5.5,8.0 L15.0,1.5 L24.0,-0.5 L158.0,-0.5 L168.0,3.5 L173.5,9.0 L178.5,25.0 L178.5,563.0 L173.0,571.5 L166.0,574.5 L120.0,574.5 L114.0,572.5 L108.5,567.0 L106.5,560.0 L106.5,90.0 L102.5,83.0 L96.0,79.5 L78.0,79.5 L74.5,83.0 L74.5,607.0 L81.0,615.5 L87.0,617.5 L135.0,617.5 L164.0,619.5 L173.5,626.0 L178.5,640.0 L178.5,1339.0 L172.5,1356.0 L169.0,1359.5 L159.0,1363.5 Z M399.0,1364.5 L340.0,1364.5 L333.5,1359.0 L333.5,971.0 L331.5,966.0 L327.0,962.5 L305.0,962.5 L298.5,969.0 L298.5,1358.0 L294.0,1363.5 L291.0,1364.5 L236.0,1364.5 L233.0,1363.5 L228.5,1358.0 L228.5,31.0 L230.5,19.0 L234.5,10.0 L241.0,3.5 L252.0,-0.5 L388.0,0.5 L394.0,3.5 L400.5,10.0 L403.5,16.0 L406.5,33.0 L406.5,1357.0 L405.5,1360.0 L399.0,1364.5 Z M630.0,1364.5 L571.0,1364.5 L565.5,1361.0 L563.5,1356.0 L563.5,742.0 L558.0,736.5 L535.0,736.5 L529.5,743.0 L529.5,1358.0 L525.0,1363.5 L522.0,1364.5 L464.0,1364.5 L456.5,1359.0 L456.5,5.0 L462.0,-0.5 L613.0,-0.5 L625.0,3.5 L631.5,10.0 L636.5,25.0 L637.5,648.0 L634.5,667.0 L630.5,675.0 L620.0,682.5 L604.5,684.0 L604.5,707.0 L617.0,707.5 L626.0,711.5 L629.5,715.0 L635.5,728.0 L637.5,744.0 L637.5,1357.0 L635.0,1361.5 L630.0,1364.5 Z M858.0,1364.5 L799.0,1364.5 L794.5,1362.0 L791.5,1357.0 L791.5,968.0 L785.0,962.5 L764.0,962.5 L757.5,968.0 L757.5,1357.0 L756.5,1360.0 L750.0,1364.5 L694.0,1364.5 L687.5,1359.0 L687.5,27.0 L693.5,9.0 L698.0,4.5 L711.0,-0.5 L842.0,-0.5 L853.0,3.5 L858.5,9.0 L862.5,17.0 L864.5,27.0 L864.5,1359.0 L858.0,1364.5 Z M998.0,1364.5 L939.0,1364.5 L932.5,1359.0 L932.5,88.0 L931.5,84.0 L927.0,79.5 L906.0,79.5 L901.0,77.5 L897.5,72.0 L897.5,6.0 L903.0,-0.5 L1034.0,-0.5 L1039.5,5.0 L1039.5,73.0 L1035.0,78.5 L1011.0,79.5 L1005.5,85.0 L1005.5,1357.0 L1004.5,1360.0 L998.0,1364.5 Z M327.5,882.0 L331.5,879.0 L333.5,874.0 L333.5,88.0 L332.5,84.0 L328.0,79.5 L304.0,79.5 L298.5,86.0 L298.5,876.0 L305.0,882.5 L327.5,882.0 Z M557.5,656.0 L563.5,651.0 L563.5,84.0 L559.0,79.5 L535.0,79.5 L529.5,86.0 L529.5,650.0 L536.0,656.5 L557.5,656.0 Z M785.5,882.0 L791.5,877.0 L791.5,85.0 L786.0,79.5 L763.0,79.5 L757.5,85.0 L757.5,877.0 L764.0,882.5 L785.5,882.0 Z" transform="translate(40.0,40) scale(0.23443)"/><g class="l-text"><path d="M23.24 0.00V-106.34H2.38V-116.64H57.13V-106.34H36.85V0.00Z M100.72 0.00V-116.64H144.41V-106.34H114.38V-65.19H138.84V-55.38H114.38V-9.95H144.74V0.00Z M218.67 1.39Q206.56 1.39 199.94 -3.66Q193.33 -8.71 190.78 -17.25Q188.23 -25.79 188.23 -36.23V-80.02Q188.23 -91.29 190.82 -99.78Q193.42 -108.27 200.06 -113.00Q206.69 -117.74 218.67 -117.74Q229.39 -117.74 235.60 -113.71Q241.80 -109.67 244.50 -102.21Q247.19 -94.74 247.19 -84.41V-76.23H234.26V-83.72Q234.26 -90.78 233.32 -96.02Q232.38 -101.26 229.09 -104.13Q225.81 -107.00 218.77 -107.00Q211.41 -107.00 207.84 -103.89Q204.26 -100.78 203.13 -95.13Q201.99 -89.49 201.99 -81.97V-34.08Q201.99 -25.34 203.52 -19.92Q205.05 -14.49 208.72 -11.97Q212.39 -9.45 218.77 -9.45Q225.76 -9.45 229.04 -12.51Q232.33 -15.58 233.29 -21.01Q234.26 -26.44 234.26 -33.67V-41.81H247.19V-34.07Q247.19 -23.64 244.69 -15.62Q242.19 -7.60 236.03 -3.10Q229.88 1.39 218.67 1.39Z M295.16 0.00V-116.64H308.78V-65.56H342.15V-116.64H355.77V0.00H342.15V-55.66H308.78V0.00Z" transform="translate(353.4,258.2)"/></g></svg></a>
   <div class="lang" role="group" aria-label="Language · اللغة">
-    <button type="button" data-set="en" aria-pressed="false">EN</button>
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
     <button type="button" data-set="ar" lang="ar" aria-pressed="false">عربي</button>
-    <button type="button" data-set="both" aria-pressed="true" title="Both languages · اللغتان">EN · ع</button>
   </div>
   <a class="brand brand-ar" href="#top" aria-label="سراة التقنية — الرئيسية"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 749 400" role="img" aria-label="Sarat Tech"><path class="l-letters" d="M159.0,1363.5 L26.0,1362.5 L15.0,1358.5 L4.5,1349.0 L1.5,1342.0 L-0.5,1329.0 L0.5,751.0 L3.5,744.0 L12.0,738.5 L61.0,738.5 L66.0,740.5 L72.5,750.0 L72.5,1272.0 L74.5,1277.0 L82.0,1283.5 L96.0,1283.5 L103.5,1277.0 L105.5,1272.0 L105.5,710.0 L102.5,703.0 L95.0,697.5 L24.0,696.5 L12.0,693.5 L4.5,686.0 L0.5,671.0 L0.5,24.0 L2.5,13.0 L5.5,8.0 L15.0,1.5 L24.0,-0.5 L158.0,-0.5 L168.0,3.5 L173.5,9.0 L178.5,25.0 L178.5,563.0 L173.0,571.5 L166.0,574.5 L120.0,574.5 L114.0,572.5 L108.5,567.0 L106.5,560.0 L106.5,90.0 L102.5,83.0 L96.0,79.5 L78.0,79.5 L74.5,83.0 L74.5,607.0 L81.0,615.5 L87.0,617.5 L135.0,617.5 L164.0,619.5 L173.5,626.0 L178.5,640.0 L178.5,1339.0 L172.5,1356.0 L169.0,1359.5 L159.0,1363.5 Z M399.0,1364.5 L340.0,1364.5 L333.5,1359.0 L333.5,971.0 L331.5,966.0 L327.0,962.5 L305.0,962.5 L298.5,969.0 L298.5,1358.0 L294.0,1363.5 L291.0,1364.5 L236.0,1364.5 L233.0,1363.5 L228.5,1358.0 L228.5,31.0 L230.5,19.0 L234.5,10.0 L241.0,3.5 L252.0,-0.5 L388.0,0.5 L394.0,3.5 L400.5,10.0 L403.5,16.0 L406.5,33.0 L406.5,1357.0 L405.5,1360.0 L399.0,1364.5 Z M630.0,1364.5 L571.0,1364.5 L565.5,1361.0 L563.5,1356.0 L563.5,742.0 L558.0,736.5 L535.0,736.5 L529.5,743.0 L529.5,1358.0 L525.0,1363.5 L522.0,1364.5 L464.0,1364.5 L456.5,1359.0 L456.5,5.0 L462.0,-0.5 L613.0,-0.5 L625.0,3.5 L631.5,10.0 L636.5,25.0 L637.5,648.0 L634.5,667.0 L630.5,675.0 L620.0,682.5 L604.5,684.0 L604.5,707.0 L617.0,707.5 L626.0,711.5 L629.5,715.0 L635.5,728.0 L637.5,744.0 L637.5,1357.0 L635.0,1361.5 L630.0,1364.5 Z M858.0,1364.5 L799.0,1364.5 L794.5,1362.0 L791.5,1357.0 L791.5,968.0 L785.0,962.5 L764.0,962.5 L757.5,968.0 L757.5,1357.0 L756.5,1360.0 L750.0,1364.5 L694.0,1364.5 L687.5,1359.0 L687.5,27.0 L693.5,9.0 L698.0,4.5 L711.0,-0.5 L842.0,-0.5 L853.0,3.5 L858.5,9.0 L862.5,17.0 L864.5,27.0 L864.5,1359.0 L858.0,1364.5 Z M998.0,1364.5 L939.0,1364.5 L932.5,1359.0 L932.5,88.0 L931.5,84.0 L927.0,79.5 L906.0,79.5 L901.0,77.5 L897.5,72.0 L897.5,6.0 L903.0,-0.5 L1034.0,-0.5 L1039.5,5.0 L1039.5,73.0 L1035.0,78.5 L1011.0,79.5 L1005.5,85.0 L1005.5,1357.0 L1004.5,1360.0 L998.0,1364.5 Z M327.5,882.0 L331.5,879.0 L333.5,874.0 L333.5,88.0 L332.5,84.0 L328.0,79.5 L304.0,79.5 L298.5,86.0 L298.5,876.0 L305.0,882.5 L327.5,882.0 Z M557.5,656.0 L563.5,651.0 L563.5,84.0 L559.0,79.5 L535.0,79.5 L529.5,86.0 L529.5,650.0 L536.0,656.5 L557.5,656.0 Z M785.5,882.0 L791.5,877.0 L791.5,85.0 L786.0,79.5 L763.0,79.5 L757.5,85.0 L757.5,877.0 L764.0,882.5 L785.5,882.0 Z" transform="translate(40.0,40) scale(0.23443)"/><g class="l-text"><path d="M23.24 0.00V-106.34H2.38V-116.64H57.13V-106.34H36.85V0.00Z M100.72 0.00V-116.64H144.41V-106.34H114.38V-65.19H138.84V-55.38H114.38V-9.95H144.74V0.00Z M218.67 1.39Q206.56 1.39 199.94 -3.66Q193.33 -8.71 190.78 -17.25Q188.23 -25.79 188.23 -36.23V-80.02Q188.23 -91.29 190.82 -99.78Q193.42 -108.27 200.06 -113.00Q206.69 -117.74 218.67 -117.74Q229.39 -117.74 235.60 -113.71Q241.80 -109.67 244.50 -102.21Q247.19 -94.74 247.19 -84.41V-76.23H234.26V-83.72Q234.26 -90.78 233.32 -96.02Q232.38 -101.26 229.09 -104.13Q225.81 -107.00 218.77 -107.00Q211.41 -107.00 207.84 -103.89Q204.26 -100.78 203.13 -95.13Q201.99 -89.49 201.99 -81.97V-34.08Q201.99 -25.34 203.52 -19.92Q205.05 -14.49 208.72 -11.97Q212.39 -9.45 218.77 -9.45Q225.76 -9.45 229.04 -12.51Q232.33 -15.58 233.29 -21.01Q234.26 -26.44 234.26 -33.67V-41.81H247.19V-34.07Q247.19 -23.64 244.69 -15.62Q242.19 -7.60 236.03 -3.10Q229.88 1.39 218.67 1.39Z M295.16 0.00V-116.64H308.78V-65.56H342.15V-116.64H355.77V0.00H342.15V-55.66H308.78V0.00Z" transform="translate(353.4,258.2)"/></g></svg></a>
 </header>
@@ -391,20 +388,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <script>
 (function(){
   var html=document.documentElement; html.classList.add('js');
-  var KEY='sarat-tech-lang', wide=window.matchMedia('(min-width:960px)');
+  var KEY='sarat-tech-lang';
   function apply(v){
-    if(v==='both'&&!wide.matches) v='en';
+    if(v!=='ar') v='en';
     html.setAttribute('data-lang',v);
     html.lang = v==='ar' ? 'ar' : 'en';
     html.dir  = v==='ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===v ? 'true':'false');});
   }
   var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
-  apply(saved || (wide.matches ? 'both' : 'en'));
+  apply(saved || 'en');
   document.querySelectorAll('.lang button').forEach(function(b){
     b.addEventListener('click',function(){ apply(b.dataset.set); try{localStorage.setItem(KEY,b.dataset.set);}catch(e){} });
   });
-  wide.addEventListener('change',function(){ var cur=html.getAttribute('data-lang'); if(!wide.matches&&cur==='both') apply('en'); else if(wide.matches&&!saved) apply('both'); });
 
   /* reveal: the name lists and the method steps arrive in order */
   if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
