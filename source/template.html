@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en" data-lang="both">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarat Tech · سراة التقنية</title>
+<meta name="description" content="Sarat Tech is the digital-product studio inside Sarat Investments Holding: it designs, builds and operates digital products for the Kingdom's endeavours and Vision 2030.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#231F20">
+<link rel="icon" href="{{FAVICON}}">
+<style>
+@font-face{font-family:"Oswald";font-weight:200 700;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{{OSWALD_B64}}) format("woff2")}
+@font-face{font-family:"Cairo";font-weight:200 1000;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{{CAIRO_B64}}) format("woff2")}
+
+:root{
+  --black:#231F20;      /* Sarat Black — the field, sampled from the parent's logo file */
+  --ground:#171415;     /* the table the plate sits on */
+  --gold:#B28F3E;       /* Sarat Gold — the frame and the lettering */
+  --gold-deep:#8C6F2E;
+  --gold-faint:rgba(178,143,62,.38);
+  --gold-ghost:rgba(178,143,62,.14);
+  --white:#FFFFFF;
+  --ivory:#F3EEE3;      /* primary text on black (warm white) */
+  --sand:#CFC2A1;       /* secondary text, tinted from the gold, never grey */
+  --f-display:"Oswald",system-ui,sans-serif;
+  --f-body:"Cairo",system-ui,sans-serif;
+  --frame:3px;
+  --inset:14px;
+  --col:clamp(24px,4.5vw,72px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ground);color:var(--ivory);scroll-behavior:smooth;scroll-padding-top:120px;-webkit-text-size-adjust:100%;scrollbar-color:var(--gold-deep) var(--black)}
+body{margin:0;font-family:var(--f-body);font-size:17px;line-height:1.7;font-weight:400;background:var(--ground);min-height:100vh;caret-color:var(--gold);-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:var(--black)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold-deep);border:3px solid var(--black)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+a{color:inherit;text-decoration-color:var(--gold-faint);text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{text-decoration-color:var(--gold)}
+p{margin:0 0 1em;text-wrap:pretty;max-width:62ch}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:400}
+em{font-style:normal;color:var(--gold)}
+ul,ol{margin:0;padding:0;list-style:none}
+svg{display:block}
+.l-letters,.l-frame{fill:var(--gold)}
+.l-text{fill:var(--white)}
+.letters{fill:var(--gold)}
+.skip{position:absolute;inset-inline-start:16px;top:-60px;background:var(--gold);color:var(--black);padding:.5em 1em;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.1em;z-index:100}
+.skip:focus{top:16px}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:50;background:var(--ground);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:14px var(--inset) 12px;border-bottom:1px solid var(--gold-ghost)}
+.brand{display:block}
+.brand,.lang{grid-row:1}
+.brand-en{grid-column:1}
+.lang{grid-column:2;justify-self:center}
+.brand-ar{grid-column:3}
+.brand svg{height:42px;width:auto}
+.brand-ar{justify-self:end}
+.lang{display:flex;border:1px solid var(--gold-faint);padding:3px;gap:3px}
+.lang button{appearance:none;background:transparent;border:0;color:var(--sand);font-family:var(--f-display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:.45em .9em;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease)}
+.lang button[lang=ar]{font-family:var(--f-body);font-weight:600;letter-spacing:0;font-size:14px}
+.lang button:hover{color:var(--ivory)}
+.lang button[aria-pressed=true]{background:var(--gold);color:var(--black)}
+.index{position:sticky;top:69px;z-index:49;background:var(--ground);border-bottom:1px solid var(--gold-ghost);display:grid;grid-template-columns:1fr 1fr;padding:0 var(--inset)}
+.idx{display:flex;gap:clamp(14px,2.4vw,34px);padding:10px var(--col) 10px 0;overflow-x:auto;scrollbar-width:none;font-family:var(--f-display);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.idx::-webkit-scrollbar{display:none}
+.idx a{color:var(--sand);text-decoration:none;white-space:nowrap;padding-block:2px;border-bottom:1px solid transparent;transition:color .25s var(--ease),border-color .25s var(--ease)}
+.idx a:hover,.idx a[aria-current=true]{color:var(--gold);border-color:var(--gold)}
+.idx-ar{font-family:var(--f-body);font-weight:600;letter-spacing:0;font-size:15px;text-transform:none;padding:8px 0 8px var(--col);justify-content:flex-start}
+
+/* ---------- the plate ---------- */
+.plate{position:relative;margin:var(--inset);background:var(--black);border:var(--frame) solid var(--gold)}
+.plate::after{content:"";position:absolute;inset:6px;border:1px solid var(--gold-faint);pointer-events:none}
+.spread{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--gold-faint)}
+.spread:first-of-type{border-top:0}
+.spread::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--gold)}
+.spread::after{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 5px);width:11px;border-inline:1px solid var(--gold-ghost);pointer-events:none}
+.hero::after{display:none}
+.page{padding:clamp(56px,7vw,110px) var(--col);min-width:0}
+.page.ar{direction:rtl}
+h2{font-family:var(--f-display);font-size:clamp(30px,3.6vw,54px);line-height:1.02;letter-spacing:.015em;text-transform:uppercase;color:var(--white);margin-bottom:.55em}
+.ar h2{font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(28px,3.2vw,48px);line-height:1.25}
+h3{font-family:var(--f-display);font-size:clamp(18px,1.6vw,22px);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:2.6em 0 .9em}
+.ar h3{font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(19px,1.6vw,23px)}
+.lead{font-size:clamp(18px,1.45vw,21px);line-height:1.6;color:var(--ivory);max-width:52ch}
+.ar .lead{line-height:1.8}
+.page p{color:var(--sand)}
+.page .lead,.page .hero-p{color:var(--ivory)}
+.note{font-size:14px;color:var(--sand);opacity:.85;max-width:60ch;margin-top:1.6em}
+
+/* ---------- hero ---------- */
+.hero{grid-template-columns:minmax(0,1fr) clamp(170px,21vw,290px) minmax(0,1fr);min-height:calc(100vh - 118px);align-items:center}
+.hero::before{display:none}
+.hero .page{padding-block:clamp(48px,6vw,96px)}
+.hero h1{font-family:var(--f-display);font-size:clamp(40px,4.6vw,78px);line-height:.98;letter-spacing:.012em;text-transform:uppercase;color:var(--white);font-weight:350}
+.hero .ar h1{font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(34px,4vw,66px);line-height:1.22}
+.hero-p{font-size:clamp(17px,1.3vw,20px);line-height:1.6;margin:1.4em 0 2em;max-width:44ch}
+.ar .hero-p{line-height:1.85}
+.actions{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.btn{display:inline-block;font-family:var(--f-display);font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--black);background:var(--gold);padding:.95em 1.6em;border:1px solid var(--gold);transition:background .25s var(--ease),color .25s var(--ease)}
+.btn:hover{background:var(--black);color:var(--gold)}
+.ar .btn{font-family:var(--f-body);font-weight:700;letter-spacing:0;font-size:15px;text-transform:none}
+.link{font-family:var(--f-display);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);text-decoration:none;border-bottom:1px solid var(--gold-faint);padding-bottom:3px;transition:border-color .25s var(--ease)}
+.link:hover{border-color:var(--gold);color:var(--ivory)}
+.ar .link{font-family:var(--f-body);font-weight:700;letter-spacing:0;font-size:15px;text-transform:none}
+.spine{position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:clamp(40px,5vw,80px) 0}
+.spine::before,.spine::after{content:"";position:absolute;left:50%;width:1px;background:var(--gold-faint)}
+.spine::before{top:0;height:clamp(16px,2.6vw,40px)}
+.spine::after{bottom:0;height:clamp(16px,2.6vw,40px)}
+.lockup{width:100%;height:auto;max-height:calc(100vh - 260px)}
+.lockup .l-frame{animation:none}
+
+/* ---------- ruled lists ---------- */
+.ruled>li{border-top:1px solid var(--gold-faint);padding:1.35em 0 1.25em}
+.ruled>li:last-child{border-bottom:1px solid var(--gold-faint)}
+.ruled h3{margin:0 0 .35em;color:var(--white);font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(18px,1.5vw,21px);line-height:1.35}
+.ar .ruled h3{font-size:clamp(19px,1.5vw,22px)}
+.ruled p{margin:0;font-size:16px;line-height:1.65}
+.steps{counter-reset:step}
+.steps>li{counter-increment:step;display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:0 .6em}
+.steps>li::before{content:counter(step,decimal-leading-zero);font-family:var(--f-display);font-weight:300;font-size:clamp(22px,2vw,30px);line-height:1;color:var(--gold);padding-top:.1em}
+.steps h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.08em;color:var(--white)}
+.ar .steps h3{font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0}
+.ar .ruled p{line-height:1.8}
+
+/* ruled name lists (what we build, products) */
+.list li{border-top:1px solid var(--gold-faint);display:flex;justify-content:space-between;align-items:baseline;gap:1.5em;padding:1.05em 0}
+.list li:last-child{border-bottom:1px solid var(--gold-faint)}
+.list .name{font-family:var(--f-display);font-size:clamp(20px,1.9vw,26px);letter-spacing:.06em;text-transform:uppercase;color:var(--ivory);font-weight:350}
+.ar .list .name{font-family:var(--f-body);font-weight:700;text-transform:none;letter-spacing:0;font-size:clamp(20px,1.8vw,25px)}
+.list .keep{text-transform:none}
+.list .st{font-size:14px;color:var(--sand);white-space:nowrap;letter-spacing:.02em}
+.list li,.steps li{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .list.is-pre li,.js .steps.is-pre li{opacity:0;transform:translateY(10px)}
+
+/* group + contact */
+.group{grid-template-columns:minmax(0,1fr) clamp(140px,16vw,220px) minmax(0,1fr);align-items:center}
+.group::before,.group::after{display:none}
+.g-spine{padding:clamp(40px,5vw,80px) 0}
+.group .letters{width:62%;height:auto;margin:0 auto}
+.mail{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(22px,2.6vw,40px);letter-spacing:.01em;color:var(--gold);text-decoration:none;margin:.3em 0 .25em;word-break:break-all;border-bottom:1px solid var(--gold-faint);padding-bottom:.15em;transition:border-color .25s var(--ease)}
+.mail:hover{border-color:var(--gold)}
+.addr{font-size:15px;color:var(--sand)}
+
+/* footer */
+.foot{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:10px var(--inset) 28px;font-size:13px;color:var(--sand);letter-spacing:.02em}
+.foot .ar{direction:rtl;text-align:start}
+.foot a{text-decoration:none;color:var(--gold)}
+
+/* ---------- motion: one authored moment, the plate and its spine arriving ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .js .plate{animation:frame 1.3s var(--ease) both}
+  .js .plate::after{animation:frame-in 1.3s .15s var(--ease) both}
+  .js .lockup .l-frame{animation:rise 1.2s .1s var(--ease) both}
+  .js .lockup .l-letters{animation:letters 1.6s .25s var(--ease) both}
+  .js .lockup .l-text{animation:rise 1.2s .75s var(--ease) both}
+  .js .hero .page>*{animation:rise 1.1s var(--ease) both}
+  .js .hero .page>*:nth-child(1){animation-delay:.55s}
+  .js .hero .page>*:nth-child(2){animation-delay:.7s}
+  .js .hero .page>*:nth-child(3){animation-delay:.85s}
+  .js .spine::before,.js .spine::after{animation:rise 1s 1s var(--ease) both}
+}
+@keyframes frame{from{border-color:var(--gold-ghost)}to{border-color:var(--gold)}}
+@keyframes frame-in{from{border-color:transparent;inset:3px}to{border-color:var(--gold-faint);inset:6px}}
+@keyframes letters{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- single-language views (toggle) ---------- */
+html[data-lang=en] .page.ar,html[data-lang=en] .brand-ar,html[data-lang=en] .idx-ar,html[data-lang=en] .foot .ar{display:none}
+html[data-lang=ar] .page.en,html[data-lang=ar] .brand-en,html[data-lang=ar] .idx-en,html[data-lang=ar] .foot .en{display:none}
+html:not([data-lang=both]) .spread{grid-template-columns:minmax(0,1fr)}
+html:not([data-lang=both]) .spread::before,html:not([data-lang=both]) .spread::after{display:none}
+html:not([data-lang=both]) .hero{grid-template-columns:clamp(170px,21vw,290px) minmax(0,1fr);padding-inline:max(0px,calc((100% - 1200px)/2))}
+html:not([data-lang=both]) .hero .spine{padding-inline-start:var(--col)}
+html[data-lang=en] .hero .spine,html[data-lang=en] .g-spine{order:-1}
+html:not([data-lang=both]) .hero .page{max-width:none}
+html:not([data-lang=both]) .group{grid-template-columns:clamp(140px,16vw,220px) minmax(0,1fr);padding-inline:max(0px,calc((100% - 1200px)/2))}
+html:not([data-lang=both]) .group .page{max-width:none}
+html:not([data-lang=both]) .page{max-width:900px;margin-inline:auto;width:100%}
+html:not([data-lang=both]) .index{grid-template-columns:1fr}
+html:not([data-lang=both]) .foot{grid-template-columns:1fr}
+html[data-lang=ar] .top{direction:rtl}
+html[data-lang=ar] .brand-ar{justify-self:start;grid-column:1}
+html[data-lang=ar] .foot{direction:rtl}
+html[data-lang=ar] .idx-ar{padding-inline:0}
+html[data-lang=en] .idx-en{padding-inline:0}
+html:not([data-lang=both]) .spine::before,html:not([data-lang=both]) .spine::after{display:none}
+.lang button[data-set=both]{display:inline-block}
+
+@media (max-width:959px){
+  .top{grid-template-columns:1fr auto}
+  .brand-en,.brand-ar{grid-column:1}
+  .lang{grid-column:2;justify-self:end}
+  .brand-ar{display:none}
+  html[data-lang=ar] .brand-ar{display:block}
+  html[data-lang=ar] .brand-en{display:none}
+  .lang button[data-set=both]{display:none}
+  .index{grid-template-columns:1fr}
+  .group{grid-template-columns:minmax(0,1fr)}
+  .g-spine{order:-1;padding:36px 0 0}
+  .group .letters{width:96px}
+  .list li{flex-direction:column;gap:.15em}
+  .list .st{white-space:normal}
+}
+@media (max-width:600px){
+  :root{--inset:9px;--frame:2px;--col:20px}
+  body{font-size:16px}
+  .plate::after{inset:4px}
+  .brand svg{height:34px}
+  .index{top:61px}
+  .idx{flex-wrap:wrap;gap:4px 12px;font-size:11.5px;letter-spacing:.1em;overflow:visible;padding-inline-end:0}
+  .idx-ar{font-size:14px;gap:2px 14px}
+  html{scroll-padding-top:140px}
+  .hero{min-height:0}
+  .hero .spine{padding-bottom:0}
+  .hero .page{padding-top:28px}
+  .mail{font-size:22px}
+}
+@media (max-width:959px){
+  /* without JS on a narrow screen the two columns stack; with JS the toggle picks one */
+  .spread{grid-template-columns:minmax(0,1fr)}
+  .spread::before,.spread::after{display:none}
+  html:not([data-lang=both]) .hero,html[data-lang=both] .hero,html:not([data-lang=both]) .group,html[data-lang=both] .group{grid-template-columns:minmax(0,1fr);padding-inline:0}
+  html:not([data-lang=both]) .hero .spine,.hero .spine{order:-1;padding-inline-start:0}
+  html:not([data-lang=both]) .g-spine,.g-spine{order:-1;padding:36px 0 0}
+  .lockup{width:min(42vw,160px)}
+}
+</style>
+</head>
+<body>
+<!--
+THESIS: A bilingual company is shown, not translated: English and Arabic are two pages of one spread meeting at a gold gutter, and the brand's own framed mark is the spine between them. It refuses the hero-plus-cards company template.
+OWN-WORLD: Sarat Black field framed in Sarat Gold like the logo portrait; a second hairline frame inside; gold rules as the only structure; Oswald caps for English display, Cairo for Arabic and all body; warm sand secondary text, never grey; no icons, no cards, no gradients.
+STORY: a visitor understands Sarat Tech is the group's digital-product studio, sees what it builds and the five-step method it works by, learns who it builds for, and writes to start a conversation. Products and Team sections are deferred until the product name/logo and the team names/photos are settled (Kabozeid 2026-10-27). Content ruled by Kabozeid 2026-10-27, question by question; method lines from the Strategyzer canon in Patterns Co.
+FIRST VIEWPORT: full-height spread; English headline left, Arabic headline right, the brand's English vertical mark (SARAT · TECH, gold frame) centred as the spine for both languages; one gold action per side.
+FORM: the bilingual spread, candidate 5 of 7 on the surface list; seed key e1d2ec8b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand brand-en" href="#top" aria-label="Sarat Tech — home">{{WORDMARK_LTR}}</a>
+  <div class="lang" role="group" aria-label="Language · اللغة">
+    <button type="button" data-set="en" aria-pressed="false">EN</button>
+    <button type="button" data-set="ar" lang="ar" aria-pressed="false">عربي</button>
+    <button type="button" data-set="both" aria-pressed="true" title="Both languages · اللغتان">EN · ع</button>
+  </div>
+  <a class="brand brand-ar" href="#top" aria-label="سراة التقنية — الرئيسية">{{WORDMARK_RTL}}</a>
+</header>
+
+<nav class="index" aria-label="Sections · الأقسام">
+  <ul class="idx idx-en">
+    <li><a href="#build">What we build</a></li>
+    <li><a href="#method">How we work</a></li>
+    <li><a href="#clients">Who we serve</a></li>
+    <li><a href="#group">Group</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <ul class="idx idx-ar" dir="rtl" lang="ar">
+    <li><a href="#build">ما نبنيه</a></li>
+    <li><a href="#method">كيف نعمل</a></li>
+    <li><a href="#clients">لمن نبني</a></li>
+    <li><a href="#group">المجموعة</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</nav>
+
+<main class="plate" id="main">
+  <span id="top"></span>
+
+  <section class="spread hero" aria-label="Sarat Tech">
+    <div class="page en" lang="en">
+      <h1>A digital-product studio <em>inside Sarat Investments Holding.</em></h1>
+      <p class="hero-p">The group's product studio: we design, build and operate digital products for the Kingdom's endeavours and Vision 2030.</p>
+      <div class="actions">
+        <a class="btn" href="mailto:info@sarat-tech.com?subject=Sarat%20Tech">Start a conversation</a>
+        <a class="link" href="#method">How we work</a>
+      </div>
+    </div>
+    <div class="spine">{{LOCKUP_VERTICAL}}</div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <h1>استوديو منتجات رقمية <em>داخل مجموعة سراة القابضة للاستثمارات.</em></h1>
+      <p class="hero-p">استوديو المنتجات في المجموعة: نصمّم ونبني ونشغّل منتجات رقمية لمساعي المملكة ورؤية 2030.</p>
+      <div class="actions">
+        <a class="btn" href="mailto:info@sarat-tech.com?subject=%D8%B3%D8%B1%D8%A7%D8%A9%20%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A%D8%A9">ابدأ الحديث معنا</a>
+        <a class="link" href="#method">كيف نعمل</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="spread" id="build">
+    <div class="page en" lang="en">
+      <h2>What we build.</h2>
+      <ul class="list">
+        <li><span class="name">Platforms</span></li>
+        <li><span class="name">Apps</span></li>
+        <li><span class="name">AI-enabled services</span></li>
+        <li><span class="name keep">SaaS</span></li>
+      </ul>
+      <p class="note">and whatever the endeavour needs.</p>
+    </div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <h2>ما نبنيه.</h2>
+      <ul class="list">
+        <li><span class="name">المنصات</span></li>
+        <li><span class="name">التطبيقات</span></li>
+        <li><span class="name">خدمات مدعومة بالذكاء الاصطناعي</span></li>
+        <li><span class="name">البرمجيات كخدمة <span dir="ltr">(SaaS)</span></span></li>
+      </ul>
+      <p class="note">وكل ما يحتاجه المسعى.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="method">
+    <div class="page en" lang="en">
+      <h2>How we work.</h2>
+      <ol class="ruled steps">
+        <li><div><h3>Discover</h3><p>Map the customer: their jobs, pains and gains. Diagnose the challenge before proposing a product.</p></div></li>
+        <li><div><h3>Design</h3><p>Formulate the business model on the canvas and the value proposition against it. Prototype the model, not just the screens, until the fit is clear.</p></div></li>
+        <li><div><h3>Build</h3><p>Turn the riskiest assumptions into experiments, then build the product from MVP to scalable, on a roadmap with clear milestones.</p></div></li>
+        <li><div><h3>Launch</h3><p>Release to real customers, measure against the hypotheses, and iterate on evidence, not opinion.</p></div></li>
+        <li><div><h3>Operate</h3><p>Run the product as a service, build the team around it, and grow it on data.</p></div></li>
+      </ol>
+    </div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <h2>كيف نعمل.</h2>
+      <ol class="ruled steps">
+        <li><div><h3>نكتشف</h3><p>نرسم صورة العميل: مهامه وآلامه ومكاسبه. ونشخّص التحدي قبل أن نقترح منتجاً.</p></div></li>
+        <li><div><h3>نصمّم</h3><p>نصوغ نموذج العمل على اللوحة، وعرض القيمة في مقابله. ونبني نموذجاً أولياً للنموذج لا للشاشات فقط، حتى يتضح التوافق.</p></div></li>
+        <li><div><h3>نبني</h3><p>نحوّل أخطر الافتراضات إلى تجارب، ثم نبني المنتج من نسخة أولية إلى منتج قابل للتوسّع، على خارطة طريق بمعالم واضحة.</p></div></li>
+        <li><div><h3>نطلق</h3><p>نطرحه لعملاء حقيقيين، ونقيس النتائج في مقابل الفرضيات، ونحسّن بناءً على الدليل لا الرأي.</p></div></li>
+        <li><div><h3>نشغّل</h3><p>نشغّل المنتج كخدمة، ونبني الفريق حوله، وننمّيه بالبيانات.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="spread" id="clients">
+    <div class="page en" lang="en">
+      <h2>Who we build for.</h2>
+      <p class="lead">Institutions and ventures that serve the Kingdom: operators who need software that runs the work, not software that records it.</p>
+    </div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <h2>لمن نبني.</h2>
+      <p class="lead">المؤسسات والمشاريع التي تخدم المملكة: مشغّلون يحتاجون برمجيات تدير العمل، لا برمجيات تسجّله.</p>
+    </div>
+  </section>
+
+
+  <section class="spread group" id="group">
+    <div class="page en" lang="en">
+      <div>
+        <h2>Part of Sarat Investments Holding.</h2>
+        <p class="lead">A privately owned Saudi holding headquartered in Riyadh, building joint ventures with international partners in underserved sectors of the Kingdom.</p>
+        <p>Sarat Tech carries its lettering: the SARAT letters in our mark are the group's own. <a href="https://www.saratinvestments.com/en/home/" rel="noopener" target="_blank">saratinvestments.com</a></p>
+      </div>
+    </div>
+    <div class="spine g-spine">{{LETTERS}}</div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <div>
+        <h2>جزء من مجموعة سراة القابضة للاستثمارات.</h2>
+        <p class="lead">مجموعة سعودية مملوكة ملكية خاصة، مقرّها الرياض، تبني مشاريع مشتركة مع شركاء دوليين في قطاعات غير مخدومة بالكفاية داخل المملكة.</p>
+        <p>وتحمل سراة التقنية حروف المجموعة: حروف SARAT في علامتنا هي حروف المجموعة نفسها. <a href="https://www.saratinvestments.com/en/home/" rel="noopener" target="_blank">saratinvestments.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spread" id="contact">
+    <div class="page en" lang="en">
+      <h2>Start a product with us.</h2>
+      <p class="lead">If you run an institution or a venture that should run on better software, write to us.</p>
+      <a class="mail" href="mailto:info@sarat-tech.com?subject=Sarat%20Tech">info@sarat-tech.com</a>
+      <p class="addr">Sarat Tech · Kingdom of Saudi Arabia</p>
+    </div>
+    <div class="page ar" lang="ar" dir="rtl">
+      <h2>ابدأ منتجاً معنا.</h2>
+      <p class="lead">إن كنت تدير مؤسسة أو مشروعاً يستحق برمجيات أفضل، راسلنا.</p>
+      <a class="mail" href="mailto:info@sarat-tech.com?subject=%D8%B3%D8%B1%D8%A7%D8%A9%20%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A%D8%A9" dir="ltr">info@sarat-tech.com</a>
+      <p class="addr">سراة التقنية · المملكة العربية السعودية</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="en" lang="en">Sarat Tech, part of <a href="https://www.saratinvestments.com/en/home/" rel="noopener" target="_blank">Sarat Investments Holding</a>, Riyadh · © 2026 Sarat Tech. All rights reserved.</div>
+  <div class="ar" lang="ar">سراة التقنية، جزء من <a href="https://www.saratinvestments.com/en/home/" rel="noopener" target="_blank">مجموعة سراة القابضة للاستثمارات</a>، الرياض · © 2026 سراة التقنية. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+(function(){
+  var html=document.documentElement; html.classList.add('js');
+  var KEY='sarat-tech-lang', wide=window.matchMedia('(min-width:960px)');
+  function apply(v){
+    if(v==='both'&&!wide.matches) v='en';
+    html.setAttribute('data-lang',v);
+    html.lang = v==='ar' ? 'ar' : 'en';
+    html.dir  = v==='ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===v ? 'true':'false');});
+  }
+  var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
+  apply(saved || (wide.matches ? 'both' : 'en'));
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){ apply(b.dataset.set); try{localStorage.setItem(KEY,b.dataset.set);}catch(e){} });
+  });
+  wide.addEventListener('change',function(){ var cur=html.getAttribute('data-lang'); if(!wide.matches&&cur==='both') apply('en'); else if(wide.matches&&!saved) apply('both'); });
+
+  /* reveal: the name lists and the method steps arrive in order */
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var pre=document.querySelectorAll('.list,.steps');
+    pre.forEach(function(el){ var r=el.getBoundingClientRect(); if(r.top>window.innerHeight) el.classList.add('is-pre'); });
+    document.querySelectorAll('.list li,.steps li').forEach(function(li,i){ li.style.transitionDelay=(i*70)+'ms'; });
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('is-pre'); io.unobserve(e.target);} }); },{threshold:.05});
+    pre.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ pre.forEach(function(el){ el.classList.remove('is-pre'); }); },2500);
+  }
+
+  /* index: mark the section in view */
+  var links=document.querySelectorAll('.idx a'), secs=[];
+  links.forEach(function(a){ var s=document.querySelector(a.getAttribute('href')); if(s&&secs.indexOf(s)<0) secs.push(s); });
+  if('IntersectionObserver' in window){
+    var cur=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){ a.setAttribute('aria-current', a.getAttribute('href')==='#'+e.target.id ? 'true':'false'); }); } }); },{rootMargin:'-40% 0px -55% 0px'});
+    secs.forEach(function(s){ cur.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
